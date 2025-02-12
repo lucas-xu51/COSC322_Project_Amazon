@@ -20,7 +20,6 @@ import ygraph.ai.smartfox.games.amazons.HumanPlayer;
 
 import ubc.cosc322.core.Board;
 import ubc.cosc322.core.Color;
-import ubc.cosc322.core.RandomPlayer;
 
 /**
  * An example illustrating how to implement a GamePlayer
@@ -98,8 +97,6 @@ public class COSC322Test extends GamePlayer{
 	
     	//For a detailed description of the message types and format, 
     	//see the method GamePlayer.handleGameMessage() in the game-client-api document. 
-		System.out.println("Message type: " + messageType);
-		System.out.println("Message details: " + msgDetails);
 		switch (messageType) {
             case GameMessage.GAME_STATE_BOARD:
                 handleBoardMessage(msgDetails); // 处理棋盘状态消息
@@ -136,8 +133,6 @@ public class COSC322Test extends GamePlayer{
 			board.setMyColor(Color.BLACK);
 			System.out.println("I am the black player");
 		}
-	
-		System.out.println("I am playing as: " + board.getMyColor());
 	}
 
 	private void handleGameMove(Map<String, Object> msgDetails) {
@@ -152,18 +147,17 @@ public class COSC322Test extends GamePlayer{
         int toCol = ((ArrayList<Integer>) msgDetails.get(AmazonsGameMessage.QUEEN_POS_NEXT)).get(1) - 1;   // 转换为 0-based
         int arrowRow = ((ArrayList<Integer>) msgDetails.get(AmazonsGameMessage.ARROW_POS)).get(0) - 1;     // 转换为 0-based
         int arrowCol = ((ArrayList<Integer>) msgDetails.get(AmazonsGameMessage.ARROW_POS)).get(1) - 1;     // 转换为 0-based
-
-        System.out.println(fromRow + " " + fromCol + " " + toRow + " " + toCol + " " + arrowRow + " " + arrowCol);
     
         // 更新棋盘
         board.moveQueen(fromRow, fromCol, toRow, toCol);
         board.shootArrow(toRow, toCol, arrowRow, arrowCol);
-    
-        // 显示棋盘
-        board.printBoard();
 
         // 切换当前玩家颜色
         board.switchPlayer();
+
+        
+        // 显示棋盘
+        board.printBoard();
     
         // 如果是自己的回合，调用 AI 进行移动
         if (board.getMyColor() == board.getCurrentPlayer()) {

@@ -1,11 +1,10 @@
-package ubc.cosc322.core;
+package ubc.cosc322;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import ubc.cosc322.COSC322Test;
 import ubc.cosc322.core.Board;
 import ubc.cosc322.core.Color;
 

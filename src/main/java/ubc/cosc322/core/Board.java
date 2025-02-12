@@ -74,8 +74,9 @@ public class Board {
 
     // 移动皇后
     public boolean moveQueen(int fromRow, int fromCol, int toRow, int toCol) {
+
         // 检查起点是否是当前玩家的皇后
-        if (board[fromRow][fromCol] != myColor.getCode()) {
+        if (board[fromRow][fromCol] != currentPlayer.getCode()) {
             System.out.println("The starting point is not the current player's queen!");
             return false;
         }
@@ -195,9 +196,9 @@ public class Board {
         arrowPos.add(serverArrowX + 1); // 转换为 1-based 索引
         arrowPos.add(serverArrowY + 1);
 
-        System.out.println("from: " + queenPosCurr);
-        System.out.println("to: " + queenPosNext);
-        System.out.println("arrow: " + arrowPos);
+        System.out.println("my queen move from: " + queenPosCurr);
+        System.out.println("my queen move to: " + queenPosNext);
+        System.out.println("shoot arrow to: " + arrowPos);
 
         // 将移动信息添加到 Map
         moveDetails.put(AmazonsGameMessage.QUEEN_POS_CURR, queenPosCurr);
