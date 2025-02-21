@@ -74,6 +74,8 @@ public class Board {
 
     // 移动皇后
     public boolean moveQueen(int fromRow, int fromCol, int toRow, int toCol) {
+        
+        System.out.println("Attempting to move queen from (" + fromRow + "," + fromCol + ") to (" + toRow + "," + toCol + ")");
 
         // 检查起点是否是当前玩家的皇后
         if (board[fromRow][fromCol] != currentPlayer.getCode()) {
@@ -101,6 +103,8 @@ public class Board {
 
     // 射箭
     public boolean shootArrow(int fromRow, int fromCol, int toRow, int toCol) {
+
+        System.out.println("Attempting to shoot arrow from (" + fromRow + "," + fromCol + ") to (" + toRow + "," + toCol + ")");
         // 检查终点是否在棋盘范围内且为空
         if (!isValidPosition(toRow, toCol) || board[toRow][toCol] != 0) {
             System.out.println("arrow not legal!!!!!");
@@ -215,5 +219,13 @@ public class Board {
 
     public int[][] getBoard() {
         return board;
+    }
+
+    public GameClient getGameClient() {
+        return this.gameClient;
+    }
+
+    public void setCurrentPlayer(Color currentPlayer) {
+        this.currentPlayer = currentPlayer;
     }
 }

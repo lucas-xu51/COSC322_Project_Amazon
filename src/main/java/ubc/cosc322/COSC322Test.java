@@ -44,9 +44,10 @@ public class COSC322Test extends GamePlayer{
      * @param args for name and passwd (current, any string would work)
      */
     public static void main(String[] args) {
+        AIPlayer player = new AIPlayer("player", "pwd");
 		//HumanPlayer player = new HumanPlayer();
 		//Spectator player = new Spectator();
-		RandomPlayer player = new RandomPlayer("player","pwd");
+		//RandomPlayer player = new RandomPlayer("player","pwd");
 		//COSC322Test player = new COSC322Test("player","pwd");
         System.out.println(player.getGameGUI());
 
